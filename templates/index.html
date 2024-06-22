@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block header %}
+<header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="{{ url_for('home') }}">
+            <img src="images/logo.png" alt="" />
+            <span>
+              Td_List
+            </span>
+          </a>
+
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ">
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only"></span></a>
+              </li>
+              <li class="nav-item">
+                {% if current_user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('user_panel', username=user.username) }}">Panel</a>
+              </li>
+                {% endif %}
+            </ul>
+            <div class="user_option">
+                {% if not current_user.is_authenticated: %}
+              <a href="{{ url_for('login') }}">
+                <span>
+                  Login
+                </span>
+              </a>
+                {% else: %}
+                <a href="{{ url_for('logout') }}">
+                <span>
+                  Logout
+                </span>
+              </a>
+                {% endif %}
+              <a href="{{ url_for('register') }}">
+                <span>
+                  Register
+                </span>
+              </a>
+
+            </div>
+          </div>
+
+        </nav>
+      </div>
+    </header>
+{% endblock %}
+{% block content%}
+<h2>
+    Welocme</h2><h3> <br>
+    Log in or register <br>
+    To start organizing your time with extra notes
+</h3>
+<p>
+    It is a long established fact being well organized improves your productivity
+</p>
+
+
+{% endblock %}

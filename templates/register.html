@@ -1,0 +1,11 @@
+{% extends 'sign.html' %}
+{% block content %}
+<form method="POST" action="{{ url_for('register') }}">
+{{ super() }}
+{{ form.send }}
+</form>
+{% for mesg in get_flashed_messages() %}
+      <h1>{{ mesg }}</h1>
+      {% endfor %}
+{% endblock %}
+

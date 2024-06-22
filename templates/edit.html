@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% from "bootstrap5/form.html" import render_form %}
+{% block stylesheet %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+<div class="addform">
+    <form action="{{ url_for('edit_note', username=user.username, noteid=noteid) }}" method="POST">
+        {{ form.csrf_token }}
+        {{ form.description.label }}{{ form.description}}
+        {{ form.ev_date.label }}{{ form.ev_date }}
+        {{ form.send }}
+    </form>
+</div>
+
+{% endblock %}

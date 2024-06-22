@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+    {% block stylesheet %}
+        {{ super() }}
+        <link href ="../static/user_panel.css" rel="stylesheet">
+    {% endblock %}
+    {% block content %}
+    <div class="main_content">
+    <div class="Welcome"><h1>Welcome to user Panel, {{ user.username }}</h1></div>
+    <div class="notes_list">
+        <h2 class="notes_heading">current notes</h2>
+        <div class="contains_notes">
+    {% for note in notes %}
+        <div class="card">
+            <div class="card-body">
+        <a href=" {{ url_for('show_note', username=username, noteid=note.id) }} ">
+        <h3 class="card-title">{{note.Date}}</h3>
+        <!--
+        <h4 class="card-subtitle">{{ note.title }}</h4>
+        !-->
+        <p class="card-text">{{ note.Description }}</p>
+        </a>
+        </div>
+            </div>
+    {% endfor %}
+            </div>
+    </div>
+    <div class="sidebar_right">
+        <div class="actions">
+            <ul>
+                <li><a href="{{ url_for('add') }}">Add Note</a></li>
+                <li><a href="{{ url_for('editlist', username=user.username) }}">Edit Notes</a></li>
+                <li><a href="{{ url_for('delete_list', username=user.username) }}">Delete Notes</a></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    {% endblock %}

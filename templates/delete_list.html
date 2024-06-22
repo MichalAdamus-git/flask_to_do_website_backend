@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="contains_notes">
+{% for note in notes %}
+<div class="card">
+    <div class="card-body">
+        <a href=" {{ url_for('delete_note', username=username, noteid=note.id) }} ">
+        <h3 class="card-title">{{note.Date}}</h3>
+        <!--
+        <h4 class="card-subtitle">{{ note.title }}</h4>
+        !-->
+        <p class="card-text">{{ note.Description }}</p>
+        </a>
+    </div>
+</div>
+{% endfor %}
+    </div>
+{% endblock %}
